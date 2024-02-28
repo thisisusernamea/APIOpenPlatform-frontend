@@ -5,6 +5,7 @@ import type { RunTimeLayoutConfig } from '@umijs/max';
 import { history, Link } from '@umijs/max';
 import { requestConfig } from './requestConfig';
 import { getLoginUserUsingGet } from '@/services/APIOpenPlatform-backend/userController';
+/*import RightContent from '@/components/RightContent';*/
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -32,6 +33,7 @@ export async function getInitialState(): Promise<InitialState> {
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
   return {
     actionsRender: () => [<Question key="doc" />],
+    /*rightContentRender:() => <RightContent />,*/
     avatarProps: {
       src: initialState?.loginUser?.userAvatar,
       title: <AvatarName />,
@@ -39,7 +41,6 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
       },
     },
-    /*rightContentRender:() => <RightContent />,*/
     waterMarkProps: {
       content: initialState?.loginUser?.userName,
     },
